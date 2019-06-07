@@ -46,11 +46,41 @@ Open Swagger UI to test API running
 http://localhost:9090/swagger-ui.html
 ```
 
-You can also directly open API in swagger and test POST and GET requestfor demo.
+You can now directly open API in swagger and test POST and GET requests for demo.
+
+### API
+
+There are two end points published under Ad Controller (ad-controller). 
+1. demo is POST method to send json data to server using body tag. based on request Demographics, Country code etc will be populated.
+
+```
+curl -X POST "http://localhost:9090/ad/demo" -H "accept: */*" -H "Content-Type: application/json" -d "{\"site\": {\"id\": \"foo123\",\"page\": \"http://www.foo.com/why-foo\"},\"device\": {\"ip\": \"69.250.196.118\"},\"user\": {\"id\": \"9cb89r\"}}"
+```
+
+For above query out should look like below:
+```
+{
+  "site": {
+    "id": "foo123",
+    "page": "http://www.foo.com/why-foo",
+    "demographics": null,
+    "publisher": null
+  },
+  "device": {
+    "ip": "69.250.196.118",
+    "geo": {
+      "country": "US"
+    },
+    "country_code": null
+  },
+  "user": {
+    "id": "9cb89r"
+  }
+}
+```
+As on my PC demograpis and publisher API is blocked I got null reply however for Geo API country "US" has been populated and this happened with in 
 
 ### Challenges
 
-Demographic servicecn block your IP address and after that ADEnhancer will put only null values for those variables.
-```
+Demographic service can block your IP address and after that ADEnhancer will put only null values for demographics and publisher variables.
 
-```
