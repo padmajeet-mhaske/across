@@ -1,5 +1,3 @@
-# across
-
 # 33Across Example
 
 This application is trying to build Ad Enhancer around existing request. 
